@@ -8,7 +8,6 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script src="html5-qrcode.min.js"></script>
 	<style>
 		body {
@@ -131,13 +130,9 @@
 	<script type="text/javascript">
 		function onScanSuccess(qrCodeMessage) {
 			//document.getElementById('result').innerHTML = '<span class="result">'+qrCodeMessage+'</span>';
-			Swal.fire({
-				position: 'top-end',
-				icon: 'success',
-				title: 'Your work has been saved',
-				showConfirmButton: false,
-				timer: 1500
-			});
+			const audio = new Audio();
+			audio.src = "./success.mp3";
+			audio.play();
 			const url = "https://www.facebook.com/";
             window.open(url, '_self');
 		}
