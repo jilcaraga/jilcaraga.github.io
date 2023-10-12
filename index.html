@@ -26,6 +26,7 @@
 			display: flex;
 			padding: 1em;
 		}
+
 		.col {
 			border-radius: 30px;
 			display: flex;
@@ -34,6 +35,14 @@
 			max-width: 95%;
 			background-color: white;
 		}
+
+		.header_col {
+			display: flex;
+			justify-content: center;
+			margin: 1em;
+			max-width: 95%;
+		}
+
 		.qr_opencam {
 			margin-top: 16px;
 			background-color: #00BFA6;
@@ -92,8 +101,9 @@
 </head>
 <body>
 	<div class="row">
-		<h3>32</h3>
-			<br><br>
+		<div class="header_col">
+			<span>JILC Attendance System</span>
+		</div>
 		<div class="col">
 			<div style="width:400px;" id="reader"></div>
 		</div>
