@@ -151,10 +151,11 @@
 				});
 
 				if (password === "admin123") {
-					Swal.fire(`Entered password: ${password}`);
+					 localStorage.setItem('permit','allowed');
 				}
 				else {
-					Swal.fire(`Incorrect Password`);
+					const url = "https://jilcaraga.github.io/qr_reader/error.html";
+                    window.open(url, '_self');
 				}
 			}
 		}
