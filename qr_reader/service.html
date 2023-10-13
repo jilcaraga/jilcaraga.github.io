@@ -109,9 +109,8 @@
         function openUrl(serv) {
             const currentUrl = window.location.href;
             const splitString = currentUrl.split("?");
-            alert(currentUrl);
-            //const url = "https://jilcaraga.github.io/qr_reader/try.html?"+splitString[1]+">"+serv;
-            //window.open(url, '_self');
+            const url = "https://jilcaraga.github.io/qr_reader/try.html?"+splitString[1]+">"+serv;
+            window.open(url, '_self');
         }
      </script>
 
@@ -124,7 +123,6 @@
         <button class="button" id = "button1" onclick="openUrl('1st')">1st Service</button>
         <button class="button" id = "button2" onclick="openUrl('2nd')">2nd Service</button>
         <button class="button" id = "button3" onclick="openUrl('3rd')">Night of Power</button>
-        <button>what you doing?</button>
     </div>
    
 </body>
