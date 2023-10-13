@@ -134,9 +134,7 @@
 		async function checkStorage(){
 			const permit = localStorage.getItem('permit');
 
-            if(permit === "allowed") {
-				alert("data Added!");
-			}
+            if(permit === "allowed") { }
 			else {
 				const { value: password } = await Swal.fire({
 					title: 'Enter your password',

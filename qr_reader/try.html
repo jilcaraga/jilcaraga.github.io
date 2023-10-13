@@ -2,7 +2,14 @@
 <html>
 <head>
 <title>Page Title</title>
-<script>
+
+<link rel="stylesheet" href="css/forloaddpage.css">
+<link rel="stylesheet" href="sweetalert2.min.css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script defer src="sweetalert2.all.min.js"></script>
+<script defer src="sweetalert2.min.js"></script>
+<script defer>
 
     let api_a = "https://script.google.com/macros/s/AKfycbyovOM2JY93SfazQWw79I7ydNKNV64wX2GHOxHglO6ni6EvGjK216_E00k7gkHlEO1DRQ/exec";
     
@@ -73,13 +80,25 @@
             })
             .then(res => res.text())
             .then(data => {
-                alert("Attendance checked");
+                Swal.fire({
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Attendance has been recorded!',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
                 const url = "https://jilcaraga.github.io/qr_reader/";
-               window.open(url, '_self');
+                window.open(url, '_self');
             });
     	}
     	else {
-    	  alert("You are already added to the attendance!!");
+            Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Failed! The data is already been added!',
+                showConfirmButton: false,
+                timer: 1500
+            });
     	  const url = "https://jilcaraga.github.io/qr_reader/";
     	  window.open(url, '_self');
     	}
@@ -87,6 +106,14 @@
 </script>
 </head>
 <body onload="checkData()">
-    <h5>in try.html</h5>
+    <div class="wrapper">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <div class="shadow"></div>
+        <span>Loading</span>
+    </div>
 </body>
 </html>
