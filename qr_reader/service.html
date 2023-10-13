@@ -73,36 +73,44 @@
 
     <script>
         function checkDate(){
+
+            const permit = localStorage.getItem('permit');
+
+            if(permit === "allowed") {
+                const button1 = document.querySelector("#button1");
+                const button2 = document.querySelector("#button2");
+                const button3 = document.querySelector("#button3");
+                
+                var today = new Date();
+                var day = today.getDay(); 
             
-            const button1 = document.querySelector("#button1");
-            const button2 = document.querySelector("#button2");
-            const button3 = document.querySelector("#button3");
-            
-            var today = new Date();
-            var day = today.getDay(); 
-        
-            if(day == 0) {
-                button3.disabled = true;
-                button3.textContent = "Not Available Today!";
-                $('#button3').removeClass('button').addClass('disbutton');
-            } else if(day == 5) {
-                button1.disabled = true;
-                button2.disabled = true;
-                button1.textContent = "Not Available Today!";
-                button2.textContent = "Not Available Today!";
-                $('#button1').removeClass('button').addClass('disbutton');
-                $('#button2').removeClass('button').addClass('disbutton');
+                if(day == 0) {
+                    button3.disabled = true;
+                    button3.textContent = "Not Available Today!";
+                    $('#button3').removeClass('button').addClass('disbutton');
+                } else if(day == 5) {
+                    button1.disabled = true;
+                    button2.disabled = true;
+                    button1.textContent = "Not Available Today!";
+                    button2.textContent = "Not Available Today!";
+                    $('#button1').removeClass('button').addClass('disbutton');
+                    $('#button2').removeClass('button').addClass('disbutton');
+                }
+                else {
+                    button1.disabled = true;
+                    button2.disabled = true;
+                    button3.disabled = true;
+                    button1.textContent = "Not Available Today!";
+                    button2.textContent = "Not Available Today!";
+                    button3.textContent = "Not Available Today!";
+                    $('#button1').removeClass('button').addClass('disbutton');
+                    $('#button2').removeClass('button').addClass('disbutton');
+                    $('#button3').removeClass('button').addClass('disbutton');
+                }
             }
             else {
-                button1.disabled = true;
-                button2.disabled = true;
-                button3.disabled = true;
-                button1.textContent = "Not Available Today!";
-                button2.textContent = "Not Available Today!";
-                button3.textContent = "Not Available Today!";
-                $('#button1').removeClass('button').addClass('disbutton');
-                $('#button2').removeClass('button').addClass('disbutton');
-                $('#button3').removeClass('button').addClass('disbutton');
+                const url = "https://jilcaraga.github.io/qr_reader/error.html";
+                window.open(url, '_self');
             }
         }
     
