@@ -80,42 +80,15 @@
             })
             .then(res => res.text())
             .then(data => {
-                //alert('Great! Attendance Recorded Successfully!');
-
-                Swal.fire({
-                    icon: 'success',   
-                    title: 'Great! Attendance Recorded Successfully!',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Save',
-                    denyButtonText: `Don't save`,
-                }).then((result) => {
-                /* Read more about isConfirmed, isDenied below */
-                    if (result.isConfirmed) {
-                        const url = "https://jilcaraga.github.io/qr_reader/";
-                        window.open(url, '_self');
-                    }
-                })
+                alert('Great! Attendance Recorded Successfully!');
+                const url = "https://jilcaraga.github.io/qr_reader/";
+                window.open(url, '_self');
             });
     	}
     	else {
-            //alert(p2 + ', ' + p3 +' was already recorded!');
-           // const url = "https://jilcaraga.github.io/qr_reader/";
-           // window.open(url, '_self');
-            Swal.fire({
-                    icon: 'error',   
-                    title: 'Failed! '+ p2 + ', ' + p3 +' was already recorded!',
-                    showDenyButton: true,
-                    showCancelButton: false,
-                    confirmButtonText: 'Save',
-                    denyButtonText: `Don't save`,
-            }).then((result) => {
-            /* Read more about isConfirmed, isDenied below */
-                if (result.isConfirmed) {
-                    const url = "https://jilcaraga.github.io/qr_reader/";
-                    window.open(url, '_self');
-                }
-            })
+          alert('Failed! '+ p2 + ', ' + p3 +' was already recorded!');
+    	  const url = "https://jilcaraga.github.io/qr_reader/";
+    	  window.open(url, '_self');
     	}
     }
 </script>
