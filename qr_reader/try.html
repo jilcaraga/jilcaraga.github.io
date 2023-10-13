@@ -80,21 +80,13 @@
             })
             .then(res => res.text())
             .then(data => {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'SUCCESS',
-                    text: 'Attendance Recorded Successfully!'
-                })
+                alert('Great! Attendance Recorded Successfully!');
                 const url = "https://jilcaraga.github.io/qr_reader/";
                 window.open(url, '_self');
             });
     	}
     	else {
-            Swal.fire({
-                icon: 'error',
-                title: 'FAILED',
-                text: p2 + ', ' + p3 +' was already recorded!'
-            })
+          alert(p2 + ', ' + p3 +' was already recorded!');
     	  const url = "https://jilcaraga.github.io/qr_reader/";
     	  window.open(url, '_self');
     	}
