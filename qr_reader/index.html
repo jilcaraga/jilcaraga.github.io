@@ -134,8 +134,8 @@
 			audio.src = "./success.mp3";
 			audio.play();
 			alert(qrCodeMessage);
-			//const url = qrCodeMessage;
-            //window.open(url, '_self');
+			const url = qrCodeMessage;
+            window.open(url, '_self');
 		}
 		
 		function onScanError(errorMessage) {
