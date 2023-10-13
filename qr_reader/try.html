@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<script>
+
+    let api_a = "https://script.google.com/macros/s/AKfycbyovOM2JY93SfazQWw79I7ydNKNV64wX2GHOxHglO6ni6EvGjK216_E00k7gkHlEO1DRQ/exec";
+    
+    async function checkData(){
+         fetch(api_a)
+        .then((response) => response.json())
+        .then((data) => doThis(data)); 
+    }
+    
+    async function doThis(data){
+    	  const myKeys = window.location.search;
+        const urlParams = new URLSearchParams(myKeys);
+        let text = urlParams.get('id'); 
+        const records = text.split(">");
+        const p1 = records[0];
+        const p2 = records[1];
+        const p3 = records[2];
+        const p4 = records[3];
+        const p5 = records[4];
+        const p6 = records[5];
+        const p7 = records[6];
+	    const p8 = records[7];
+        
+        const today = new Date();
+        const birthDate = new Date(p5);
+          // Calculate the difference between the birth date and the current date in days.
+        const daysSinceBirth = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+        
+          // Calculate the age in years.
+        const age = Math.floor(daysSinceBirth / 365);
+        
+    	const d = new Date();
+        const month = d.getMonth() + 1;
+        const day = d.getDate();
+        const year = d.getFullYear();
+        const t = `${month}/${day}/${year}`;
+        
+        const now = new Date();
+        const timeString = now.toLocaleTimeString("en-US");
+        const timeStringWithoutSeconds = timeString.replace(/:\d\d /, ' ');
+    	
+    	const button = document.getElementById('myButton');
+    	var cnt = 0;
+    	
+    	for (var i = 1 ; i < data.length ; i++) {
+    	    if(p1 == data[i][0] && t == data[i][7] && p8 == data[i][9]) {
+    	        cnt++;
+    	    }
+    	}
+    	
+    	if(cnt == 0) {
+        	let obj = {
+                id: p1,
+                fname: p2,
+                lname: p3,
+                gen: p4,
+                age: age,
+                cstatus: p6,
+                type: p7,
+                date: "'"+t,
+                time: timeStringWithoutSeconds,
+                service: p8
+            };
+        	
+        	 fetch(api_a,{
+                method:"POST",
+                body:JSON.stringify(obj)
+            })
+            .then(res => res.text())
+            .then(data => {
+                alert("Attendance checked");
+                const url = "https://jilcaraga.github.io/qr_reader/";
+               window.open(url, '_self');
+            });
+    	}
+    	else {
+    	  alert("You are already added to the attendance!!");
+    	  const url = "https://jilcaraga.github.io/qr_reader/";
+    	  window.open(url, '_self');
+    	}
+    }
+</script>
+</head>
+<body onload="checkData()">
+    <h5>in try.html</h5>
+</body>
+</html>
