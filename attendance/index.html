@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+    <link rel="stylesheet" href="sweetalert2.min.css">
+
+    <script defer src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script defer src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script defer src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script defer src="sweetalert2.all.min.js"></script>
+    <script defer src="sweetalert2.min.js"></script>
+    <script defer src="https://kit.fontawesome.com/d213c37a5c.js" crossorigin="anonymous"></script>
+    <script defer src="https://apis.google.com/js/api.js"></script>
+    
+
+    <title>JILC Caraga System</title>
+</head>
+<body onload="beforeLoading()">
+
+    <div class="container mt-3">
+        <!-- Nav tabs -->
+        <span><center><h2><b>Attendance System</b></h2></center></span><p></p>
+        <div class="navi">
+            <ul class="nav nav-tabs justify-content-center" role="tablist">
+                <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="tab" href="#1st">WHS 1</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#2nd">WHS 2</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="tab" href="#3rd">NOP</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="1st" class="container">
+            <p></p>
+            <div id="DisableDiv">Loading...</div>
+            <div class="cont">
+                <h3 id="titlehome">1st Service</h3>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#myModal" id="addmodal">Add</button>
+                    <a type="button" class="btn btn-success btn-sm" id="cancel" href = "#">View</a>
+                </div>
+            </div><br>
+            <div class="row">
+                <table id="example" class="table table-striped display compact" cellspacing="0" style="width:100%">
+                    <thead>
+                        <th class="no-hide-1">Name</th>
+                        <th>Gender</th>
+                        <th class="no-hide"></th>
+                    </thead>
+                    <tbody id="tbody">
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>  
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+      
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Checking Attendance</h4>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" onclick="closeDisplay()"></button>
+            </div>
+      
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form>
+                <div class="row">
+                    <div class="col">
+                      <label for="fname" class="form-label">First Name</label>
+                      <input type="text" class="form-control" placeholder="Enter First Name" id = "fnamea" name="fname">
+                    </div>
+                    <div class="col">
+                        <label for="lname" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Last Name" id = "lnamea" name="lname">
+                    </div>
+                </div>
+
+                <div class="row mb-3 mt-3">
+                    <div class="col">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select class="form-select" id = "gendera">
+                          <option value ="M">Male</option>
+                          <option value ="F">Female</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                      <label for="bdate" class="form-label">Birthdate</label>
+                      <input type="date" class="form-control" placeholder="Enter your age" id="bdate" name="bdate">
+                    </div>
+                </div>
+
+                <div class="mb-3 mt-3">
+                  <label for="cnuma" class="form-label">Contact Number</label>
+                  <input type="text" class="form-control" id="cnuma" placeholder="Enter your contact number" name="cnuma">
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label for="civila" class="form-label">Civil Status</label>
+                        <select class="form-select" id = "civila">
+                          <option value ="Single">Single</option>
+                          <option value ="Engaged">Engaged</option>
+                          <option value ="Married">Married</option>
+                          <option value ="Widowed">Widowed</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="statusa" class="form-label">Attendance Status</label>
+                        <select class="form-select" id = "statusa">
+                          <option value ="member">Member</option>
+                          <option value ="visitor">Visitor</option>
+                          <option value ="first timer">First Timer</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+      
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="getForm()">Add</button>
+              <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="closeDisplay()">Close</button>
+            </div>
+            
+            </form>
+          </div>
+        </div>
+      </div>
+   
+    <script defer src="fetch.js"></script>
+</body>
+
+</body>
+</html>
